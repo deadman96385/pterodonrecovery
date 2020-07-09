@@ -144,8 +144,34 @@ else
 LOCAL_CFLAGS += -DRECOVERY_UI_VR_STEREO_OFFSET=0
 endif
 
+##
+## libs module name
+##
+LIBAROMA_MK_ZLIB_LIB := libz
+LIBAROMA_MK_PNG_LIB := libpng
+LIBAROMA_MK_JPEG_LIB := libjpeg_static
+LIBAROMA_MK_FREETYPE_LIB := libft2_libaroma
+LIBAROMA_MK_HARFBUZZNG_LIB := libharfbuzz_ng_libaroma
+LIBAROMA_MK_MINZIP_LIB := libminzip_libaroma
+
 LOCAL_C_INCLUDES += \
-    system/vold \
+    $(commands_recovery_local_path)/gui/theme \
+    $(commands_recovery_local_path)/gui/libaroma/src \
+    $(commands_recovery_local_path)/gui/libaroma/src/aroma/ui \
+    $(commands_recovery_local_path)/gui/libaroma/libs/jpeg \
+    $(commands_recovery_local_path)/gui/libaroma/src/contrib/platform/linux/include \
+    $(commands_recovery_local_path)/gui/libaroma/include \
+    $(commands_recovery_local_path)/gui/libaroma/libs/freetype/include \
+    $(commands_recovery_local_path)/gui/libaroma/libs/harfbuzz-ng/include \
+    $(commands_recovery_local_path)/gui/libaroma/libs/harfbuzz-ng/src/hb-ucdn \
+    $(commands_recovery_local_path)/gui/libaroma/libs/harfbuzz-ng/src \
+    $(commands_recovery_local_path)/gui/libaroma/libs/minzip
+    
+LOCAL_STATIC_LIBRARIES += \
+   libaroma \
+   libft2_libaroma \
+   libharfbuzz_ng_libaroma \
+   libminzip_libaroma
 
 # Health HAL dependency
 LOCAL_STATIC_LIBRARIES := \
